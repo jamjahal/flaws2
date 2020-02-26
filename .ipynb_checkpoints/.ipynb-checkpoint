@@ -1,0 +1,446 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 53,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Updating Homebrew...\n",
+      "\u001b[34m==>\u001b[0m \u001b[1mAuto-updated Homebrew!\u001b[0m\n",
+      "Updated 2 taps (homebrew/core and homebrew/cask).\n",
+      "\u001b[34m==>\u001b[0m \u001b[1mNew Formulae\u001b[0m\n",
+      "literate-git\n",
+      "\u001b[34m==>\u001b[0m \u001b[1mUpdated Formulae\u001b[0m\n",
+      "ballerina       devdash         krb5            parallel        vegeta\n",
+      "berglas         git-fixup       mk-configure    postgis         wasmer\n",
+      "bit             gitlab-runner   molecule        shairport-sync\n",
+      "clojure-lsp     go-bindata      monetdb         shellharden\n",
+      "contentful-cli  hmmer           nfdump          sk\n",
+      "crc             jenkins         okteto          vale\n",
+      "\u001b[34m==>\u001b[0m \u001b[1mDeleted Formulae\u001b[0m\n",
+      "jpcsp\n",
+      "\n",
+      "\u001b[32m==>\u001b[0m \u001b[1mInstalling dependencies for jq: \u001b[32moniguruma\u001b[39m\u001b[0m\n",
+      "\u001b[32m==>\u001b[0m \u001b[1mInstalling jq dependency: \u001b[32moniguruma\u001b[39m\u001b[0m\n",
+      "\u001b[34m==>\u001b[0m \u001b[1mDownloading https://homebrew.bintray.com/bottles/oniguruma-6.9.4.catalina.bo\u001b[0m\n",
+      "\u001b[34m==>\u001b[0m \u001b[1mDownloading from https://akamai.bintray.com/05/05e25bc53db0cf338a7f765da76c6\u001b[0m\n",
+      "######################################################################## 100.0%\n",
+      "\u001b[34m==>\u001b[0m \u001b[1mPouring oniguruma-6.9.4.catalina.bottle.tar.gz\u001b[0m\n",
+      "🍺  /usr/local/Cellar/oniguruma/6.9.4: 17 files, 1.3MB\n",
+      "\u001b[32m==>\u001b[0m \u001b[1mInstalling \u001b[32mjq\u001b[39m\u001b[0m\n",
+      "\u001b[34m==>\u001b[0m \u001b[1mDownloading https://homebrew.bintray.com/bottles/jq-1.6.catalina.bottle.1.ta\u001b[0m\n",
+      "\u001b[34m==>\u001b[0m \u001b[1mDownloading from https://akamai.bintray.com/82/820a3c85fcbb63088b160c7edf125\u001b[0m\n",
+      "######################################################################## 100.0%\n",
+      "\u001b[34m==>\u001b[0m \u001b[1mPouring jq-1.6.catalina.bottle.1.tar.gz\u001b[0m\n",
+      "🍺  /usr/local/Cellar/jq/1.6: 18 files, 1MB\n"
+     ]
+    }
+   ],
+   "source": [
+    "# AWS Vault is a tool to securely store and access AWS credentials in a development environment.\n",
+    "#!brew cask install aws-vault\n",
+    "## Boto3 is AWS version of Python\n",
+    "!brew install jq\n",
+    "# !pip install boto3"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "metadata": {},
+   "outputs": [
+    {
+     "ename": "ModuleNotFoundError",
+     "evalue": "No module named 'aws'",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+      "\u001b[0;31mModuleNotFoundError\u001b[0m                       Traceback (most recent call last)",
+      "\u001b[0;32m<ipython-input-7-091244a4ca74>\u001b[0m in \u001b[0;36m<module>\u001b[0;34m\u001b[0m\n\u001b[1;32m      3\u001b[0m \u001b[0;32mimport\u001b[0m \u001b[0mnumpy\u001b[0m \u001b[0;32mas\u001b[0m \u001b[0mnp\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m      4\u001b[0m \u001b[0;32mimport\u001b[0m \u001b[0mboto3\u001b[0m \u001b[0;32mas\u001b[0m \u001b[0mbt\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m----> 5\u001b[0;31m \u001b[0;32mimport\u001b[0m \u001b[0maws\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m",
+      "\u001b[0;31mModuleNotFoundError\u001b[0m: No module named 'aws'"
+     ]
+    }
+   ],
+   "source": [
+    "import pandas as pd\n",
+    "import requests\n",
+    "import numpy as np\n",
+    "import boto3 as bt"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[Errno 20] Not a directory: '/Users/allanshomefolder/.aws/credentials'\n",
+      "/Users/allanshomefolder/Documents/GA/Interviewing/Interviews\n"
+     ]
+    }
+   ],
+   "source": [
+    "cd ~/.aws/credentials"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 20,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "credentials = {'login': 'https://flaws2-security.signin.aws.amazon.com/console',\n",
+    "              'account_id': '322079859186',\n",
+    "              'username':'security',\n",
+    "              'password':'password',\n",
+    "              'access_key':'AKIAIUFNQ2WCOPTEITJQ',\n",
+    "              'secret_key':'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'}"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "!aws sts get-caller-identity"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 30,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "/bin/sh: /Users/allanshomefolder/.aws/config: Permission denied\r\n"
+     ]
+    }
+   ],
+   "source": [
+    "!~/.aws/config\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 31,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Traceback (most recent call last):\r\n",
+      "  File \"botocore/configloader.py\", line 149, in raw_config_parse\r\n",
+      "  File \"configparser.py\", line 696, in read\r\n",
+      "  File \"configparser.py\", line 1079, in _read\r\n",
+      "configparser.MissingSectionHeaderError: File contains no section headers.\r\n",
+      "file: '/Users/allanshomefolder/.aws/credentials', line: 1\r\n",
+      "'`[default]\\n'\r\n",
+      "\r\n",
+      "During handling of the above exception, another exception occurred:\r\n",
+      "\r\n",
+      "Traceback (most recent call last):\r\n",
+      "  File \"aws\", line 27, in <module>\r\n",
+      "  File \"aws\", line 23, in main\r\n",
+      "  File \"awscli/clidriver.py\", line 90, in main\r\n",
+      "  File \"awscli/clidriver.py\", line 99, in create_clidriver\r\n",
+      "  File \"botocore/session.py\", line 361, in full_config\r\n",
+      "  File \"botocore/configloader.py\", line 152, in raw_config_parse\r\n",
+      "botocore.exceptions.ConfigParseError: Unable to parse config file: /Users/allanshomefolder/.aws/credentials\r\n",
+      "[26934] Failed to execute script aws\r\n"
+     ]
+    }
+   ],
+   "source": [
+    "!aws sts get-caller-identity\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 32,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "\r\n",
+      "The source profile \"security\" must have credentials.\r\n"
+     ]
+    }
+   ],
+   "source": [
+    "!aws --profile target_security sts get-caller-identity"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 41,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "!open ~/.aws/config"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Login using AWS-Vault"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 29,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "2020/02/24 09:25:36 ERROR: failed to load CSM configuration, SharedConfigLoadError: failed to load config file, /Users/allanshomefolder/.aws/credentials\n",
+      "caused by: INIParseError: unsupported expression {expr {1 STRING 0 [96]} true []}\n",
+      "\u001b[m\u001b[m\u001b[m\u001b[J(base) allanshomefolder@Allans-MacBook-Pro Interviews % \u001b[K\u001b[?2004hewing/Interviews\u0007  \u001b[?2004l\n",
+      "\u001b[m\u001b[m\u001b[m\u001b[J(base) allanshomefolder@Allans-MacBook-Pro Interviews % \u001b[K\u001b[?2004h\u001b[?2004lterviews\u0007  \n",
+      "\u001b[m\u001b[m\u001b[m\u001b[J(base) allanshomefolder@Allans-MacBook-Pro Interviews % \u001b[K\u001b[?2004hewing/Interviews\u0007  "
+     ]
+    }
+   ],
+   "source": [
+    "!aws-vault exec security"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Log into Security Account"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 48,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def access_account(credentials):\n",
+    "    \"\"\"\n",
+    "    Used to access the account.\n",
+    "    \n",
+    "    credentials = a dict of account credentials with keys 'login','account_id',\n",
+    "                                                            'username','password','\n",
+    "                                                            access_key','secret_key'\n",
+    "    \"\"\"\n",
+    "    username = credentials['username']\n",
+    "    access_key = credentials['access_key']\n",
+    "    secret_key = credentials['secret_key']\n",
+    "    f = open('~/.aws/config','a+')\n",
+    "    f.write(f\"[profile {username}]\\n aws_access_key_id = {access_key}\\naws_secret_access_key = {secret_key}\")\n",
+    "    f.close()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 49,
+   "metadata": {},
+   "outputs": [
+    {
+     "ename": "FileNotFoundError",
+     "evalue": "[Errno 2] No such file or directory: '~/.aws/config'",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+      "\u001b[0;31mFileNotFoundError\u001b[0m                         Traceback (most recent call last)",
+      "\u001b[0;32m<ipython-input-49-237d51d017e2>\u001b[0m in \u001b[0;36m<module>\u001b[0;34m\u001b[0m\n\u001b[0;32m----> 1\u001b[0;31m \u001b[0maccess_account\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mcredentials\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m",
+      "\u001b[0;32m<ipython-input-48-078d5ec60533>\u001b[0m in \u001b[0;36maccess_account\u001b[0;34m(credentials)\u001b[0m\n\u001b[1;32m     10\u001b[0m     \u001b[0maccess_key\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mcredentials\u001b[0m\u001b[0;34m[\u001b[0m\u001b[0;34m'access_key'\u001b[0m\u001b[0;34m]\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m     11\u001b[0m     \u001b[0msecret_key\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mcredentials\u001b[0m\u001b[0;34m[\u001b[0m\u001b[0;34m'secret_key'\u001b[0m\u001b[0;34m]\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m---> 12\u001b[0;31m     \u001b[0mf\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mopen\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m'~/.aws/config'\u001b[0m\u001b[0;34m,\u001b[0m\u001b[0;34m'a+'\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m     13\u001b[0m     \u001b[0mf\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mwrite\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34mf\"[profile {username}]\\n aws_access_key_id = {access_key}\\naws_secret_access_key = {secret_key}\"\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m     14\u001b[0m     \u001b[0mf\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mclose\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+      "\u001b[0;31mFileNotFoundError\u001b[0m: [Errno 2] No such file or directory: '~/.aws/config'"
+     ]
+    }
+   ],
+   "source": [
+    "access_account(credentials)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 28,
+   "metadata": {},
+   "outputs": [
+    {
+     "ename": "FileNotFoundError",
+     "evalue": "[Errno 2] No such file or directory: '~/.aws/credentials'",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+      "\u001b[0;31mFileNotFoundError\u001b[0m                         Traceback (most recent call last)",
+      "\u001b[0;32m<ipython-input-28-249b242ab82d>\u001b[0m in \u001b[0;36m<module>\u001b[0;34m\u001b[0m\n\u001b[0;32m----> 1\u001b[0;31m \u001b[0mopen\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m'~/.aws/credentials'\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0;34m'r'\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m",
+      "\u001b[0;31mFileNotFoundError\u001b[0m: [Errno 2] No such file or directory: '~/.aws/credentials'"
+     ]
+    }
+   ],
+   "source": [
+    "open('~/.aws/credentials', 'r')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Create the target account"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 17,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def access_target(account):\n",
+    "    \"\"\"\n",
+    "    Setting up a target account that contains the CloudTrail logs is a best practice.  \n",
+    "    This function adds a profile for this function to the file.\n",
+    "    \n",
+    "    account = string of account name, ex: \"target_security\"\n",
+    "    \"\"\"\n",
+    "    f = open('~/.aws/config ', 'a+')\n",
+    "    f.write(f\"[profile {account}]\\n region=us-east-1\\noutput=json\\nsource_profile = security \\nrole_arn = arn:aws:iam::653711331788:role/security\\n\")\n",
+    "    f.close()\n",
+    "            "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "access_target('target_security')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Download the logs"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 47,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "download: s3://flaws2-logs/AWSLogs/653711331788/CloudTrail/us-east-1/2018/11/28/653711331788_CloudTrail_us-east-1_20181128T2235Z_cR9ra7OH1rytWyXY.json.gz to AWSLogs/653711331788/CloudTrail/us-east-1/2018/11/28/653711331788_CloudTrail_us-east-1_20181128T2235Z_cR9ra7OH1rytWyXY.json.gz\n",
+      "download: s3://flaws2-logs/AWSLogs/653711331788/CloudTrail/us-east-1/2018/11/28/653711331788_CloudTrail_us-east-1_20181128T2310Z_7J9NEIxrjJsrlXSd.json.gz to AWSLogs/653711331788/CloudTrail/us-east-1/2018/11/28/653711331788_CloudTrail_us-east-1_20181128T2310Z_7J9NEIxrjJsrlXSd.json.gz\n",
+      "download: s3://flaws2-logs/AWSLogs/653711331788/CloudTrail/us-east-1/2018/11/28/653711331788_CloudTrail_us-east-1_20181128T2305Z_83VTWZ8Z0kiEC7Lq.json.gz to AWSLogs/653711331788/CloudTrail/us-east-1/2018/11/28/653711331788_CloudTrail_us-east-1_20181128T2305Z_83VTWZ8Z0kiEC7Lq.json.gz\n",
+      "download: s3://flaws2-logs/AWSLogs/653711331788/CloudTrail/us-east-1/2018/11/28/653711331788_CloudTrail_us-east-1_20181128T2305Z_zKlMhON7EpHala9u.json.gz to AWSLogs/653711331788/CloudTrail/us-east-1/2018/11/28/653711331788_CloudTrail_us-east-1_20181128T2305Z_zKlMhON7EpHala9u.json.gz\n",
+      "download: s3://flaws2-logs/AWSLogs/653711331788/CloudTrail/us-east-1/2018/11/28/653711331788_CloudTrail_us-east-1_20181128T2310Z_jJW5HfNtz7kOnvcP.json.gz to AWSLogs/653711331788/CloudTrail/us-east-1/2018/11/28/653711331788_CloudTrail_us-east-1_20181128T2310Z_jJW5HfNtz7kOnvcP.json.gz\n",
+      "download: s3://flaws2-logs/AWSLogs/653711331788/CloudTrail/us-east-1/2018/11/28/653711331788_CloudTrail_us-east-1_20181128T2310Z_rp9i9zxR2Vcpqfnz.json.gz to AWSLogs/653711331788/CloudTrail/us-east-1/2018/11/28/653711331788_CloudTrail_us-east-1_20181128T2310Z_rp9i9zxR2Vcpqfnz.json.gz\n",
+      "download: s3://flaws2-logs/AWSLogs/653711331788/CloudTrail/us-east-1/2018/11/28/653711331788_CloudTrail_us-east-1_20181128T2310Z_jQajCuiobojD8I4y.json.gz to AWSLogs/653711331788/CloudTrail/us-east-1/2018/11/28/653711331788_CloudTrail_us-east-1_20181128T2310Z_jQajCuiobojD8I4y.json.gz\n",
+      "download: s3://flaws2-logs/AWSLogs/653711331788/CloudTrail/us-east-1/2018/11/28/653711331788_CloudTrail_us-east-1_20181128T2310Z_A1lhv3sWzzRIBFVk.json.gz to AWSLogs/653711331788/CloudTrail/us-east-1/2018/11/28/653711331788_CloudTrail_us-east-1_20181128T2310Z_A1lhv3sWzzRIBFVk.json.gz\n"
+     ]
+    }
+   ],
+   "source": [
+    "!aws s3 sync s3://flaws2-logs ."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 52,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "2018-11-20 11:50:08 flaws2.cloud\r\n",
+      "2018-11-20 10:45:26 level1.flaws2.cloud\r\n",
+      "2018-11-20 17:41:16 level2-g9785tw8478k4awxtbox9kk3c5ka8iiz.flaws2.cloud\r\n",
+      "2018-11-26 11:47:22 level3-oc6ou6dnkw8sszwvdrraxc5t5udrsw3s.flaws2.cloud\r\n",
+      "2018-11-27 12:37:27 the-end-962b72bjahfm5b4wcktm8t9z4sapemjb.flaws2.cloud\r\n"
+     ]
+    }
+   ],
+   "source": [
+    "#checking to see the contents of the target_security bucket\n",
+    "!aws --profile target_security s3 ls"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 54,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'/Users/allanshomefolder/Documents/GA/Interviewing/Interviews'"
+      ]
+     },
+     "execution_count": 54,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "pwd"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.7.4"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 2
+}

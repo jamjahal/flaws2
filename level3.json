@@ -1,0 +1,28 @@
+{
+    "Role": {
+        "Path": "/",
+        "RoleName": "level3",
+        "RoleId": "AROAJQMBDNUMIKLZKMF64",
+        "Arn": "arn:aws:iam::653711331788:role/level3",
+        "CreateDate": "2018-11-23T17:55:27+00:00",
+        "AssumeRolePolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+                {
+                    "Sid": "",
+                    "Effect": "Allow",
+                    "Principal": {
+                        "Service": "ecs-tasks.amazonaws.com"
+                    },
+                    "Action": "sts:AssumeRole"
+                }
+            ]
+        },
+        "Description": "Allows ECS tasks to call AWS services on your behalf.",
+        "MaxSessionDuration": 3600,
+        "RoleLastUsed": {
+            "LastUsedDate": "2020-02-12T14:45:00+00:00",
+            "Region": "us-east-1"
+        }
+    }
+}
