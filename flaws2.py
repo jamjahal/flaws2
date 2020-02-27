@@ -403,13 +403,6 @@
     "\n",
     "detect_suspicious_activity(config=CONFIG_YAML, files= files)"
    ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
-   "source": []
   }
  ],
  "metadata": {
