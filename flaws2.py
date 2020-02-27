@@ -1,429 +1,216 @@
-{
- "cells": [
-  {
-   "cell_type": "code",
-   "execution_count": 401,
-   "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "download: s3://flaws2-logs/AWSLogs/653711331788/CloudTrail/us-east-1/2018/11/28/653711331788_CloudTrail_us-east-1_20181128T2305Z_zKlMhON7EpHala9u.json.gz to AWSLogs/653711331788/CloudTrail/us-east-1/2018/11/28/653711331788_CloudTrail_us-east-1_20181128T2305Z_zKlMhON7EpHala9u.json.gz\n",
-      "download: s3://flaws2-logs/AWSLogs/653711331788/CloudTrail/us-east-1/2018/11/28/653711331788_CloudTrail_us-east-1_20181128T2235Z_cR9ra7OH1rytWyXY.json.gz to AWSLogs/653711331788/CloudTrail/us-east-1/2018/11/28/653711331788_CloudTrail_us-east-1_20181128T2235Z_cR9ra7OH1rytWyXY.json.gz\n",
-      "download: s3://flaws2-logs/AWSLogs/653711331788/CloudTrail/us-east-1/2018/11/28/653711331788_CloudTrail_us-east-1_20181128T2310Z_A1lhv3sWzzRIBFVk.json.gz to AWSLogs/653711331788/CloudTrail/us-east-1/2018/11/28/653711331788_CloudTrail_us-east-1_20181128T2310Z_A1lhv3sWzzRIBFVk.json.gz\n",
-      "download: s3://flaws2-logs/AWSLogs/653711331788/CloudTrail/us-east-1/2018/11/28/653711331788_CloudTrail_us-east-1_20181128T2310Z_7J9NEIxrjJsrlXSd.json.gz to AWSLogs/653711331788/CloudTrail/us-east-1/2018/11/28/653711331788_CloudTrail_us-east-1_20181128T2310Z_7J9NEIxrjJsrlXSd.json.gz\n",
-      "download: s3://flaws2-logs/AWSLogs/653711331788/CloudTrail/us-east-1/2018/11/28/653711331788_CloudTrail_us-east-1_20181128T2310Z_rp9i9zxR2Vcpqfnz.json.gz to AWSLogs/653711331788/CloudTrail/us-east-1/2018/11/28/653711331788_CloudTrail_us-east-1_20181128T2310Z_rp9i9zxR2Vcpqfnz.json.gz\n",
-      "download: s3://flaws2-logs/AWSLogs/653711331788/CloudTrail/us-east-1/2018/11/28/653711331788_CloudTrail_us-east-1_20181128T2305Z_83VTWZ8Z0kiEC7Lq.json.gz to AWSLogs/653711331788/CloudTrail/us-east-1/2018/11/28/653711331788_CloudTrail_us-east-1_20181128T2305Z_83VTWZ8Z0kiEC7Lq.json.gz\n",
-      "download: s3://flaws2-logs/AWSLogs/653711331788/CloudTrail/us-east-1/2018/11/28/653711331788_CloudTrail_us-east-1_20181128T2310Z_jJW5HfNtz7kOnvcP.json.gz to AWSLogs/653711331788/CloudTrail/us-east-1/2018/11/28/653711331788_CloudTrail_us-east-1_20181128T2310Z_jJW5HfNtz7kOnvcP.json.gz\n",
-      "download: s3://flaws2-logs/AWSLogs/653711331788/CloudTrail/us-east-1/2018/11/28/653711331788_CloudTrail_us-east-1_20181128T2310Z_jQajCuiobojD8I4y.json.gz to AWSLogs/653711331788/CloudTrail/us-east-1/2018/11/28/653711331788_CloudTrail_us-east-1_20181128T2310Z_jQajCuiobojD8I4y.json.gz\n"
-     ]
-    },
-    {
-     "name": "stderr",
-     "output_type": "stream",
-     "text": [
-      "INFO:__main__:Checking File: ./AWSLogs/653711331788/CloudTrail/us_east_1/2018/11/28/653711331788_CloudTrail_us-east-1_20181128T2235Z_cR9ra7OH1rytWyXY.json.gz\n",
-      "INFO:__main__:Checking File: ./AWSLogs/653711331788/CloudTrail/us_east_1/2018/11/28/653711331788_CloudTrail_us-east-1_20181128T2305Z_83VTWZ8Z0kiEC7Lq.json.gz\n",
-      "WARNING:__main__:Warning! Principal access open to the public for repo name: level2.\n",
-      "INFO:__main__:Checking File: ./AWSLogs/653711331788/CloudTrail/us_east_1/2018/11/28/653711331788_CloudTrail_us-east-1_20181128T2305Z_zKlMhON7EpHala9u.json.gz\n",
-      "INFO:__main__:Checking File: ./AWSLogs/653711331788/CloudTrail/us_east_1/2018/11/28/653711331788_CloudTrail_us-east-1_20181128T2310Z_7J9NEIxrjJsrlXSd.json.gz\n",
-      "WARNING:__main__:Warning! Principal access open to the public for repo name: level2.\n",
-      "INFO:__main__:Outside IP address: 34.234.236.212 - from eventName: CreateLogStream\n",
-      "WARNING:__main__:Warning! Principal access open to the public for repo name: level2.\n",
-      "INFO:__main__:Outside IP address: 34.234.236.212 - from eventName: CreateLogStream\n",
-      "WARNING:__main__:Warning! Principal access open to the public for repo name: level2.\n",
-      "INFO:__main__:Outside IP address: 34.234.236.212 - from eventName: CreateLogStream\n",
-      "WARNING:__main__:Warning! Principal access open to the public for repo name: level2.\n",
-      "INFO:__main__:Outside IP address: 34.234.236.212 - from eventName: CreateLogStream\n",
-      "WARNING:__main__:Warning! Principal access open to the public for repo name: level2.\n",
-      "INFO:__main__:Outside IP address: 104.102.221.250 - from eventName: ListImages\n",
-      "INFO:__main__:Call to change IP for this credential: arn:aws:sts::653711331788:assumed-role/level1/level1 - sourceIP: 104.102.221.250\n",
-      "DEBUG:__main__:{'eventVersion': '1.04', 'userIdentity': {'type': 'AssumedRole', 'principalId': 'AROAIBATWWYQXZTTALNCE:level1', 'arn': 'arn:aws:sts::653711331788:assumed-role/level1/level1', 'accountId': '653711331788', 'accessKeyId': 'ASIAZQNB3KHGIGYQXVVG', 'sessionContext': {'attributes': {'mfaAuthenticated': 'false', 'creationDate': '2018-11-28T23:03:12Z'}, 'sessionIssuer': {'type': 'Role', 'principalId': 'AROAIBATWWYQXZTTALNCE', 'arn': 'arn:aws:iam::653711331788:role/service-role/level1', 'accountId': '653711331788', 'userName': 'level1'}}}, 'eventTime': '2018-11-28T23:05:53Z', 'eventSource': 'ecr.amazonaws.com', 'eventName': 'ListImages', 'awsRegion': 'us-east-1', 'sourceIPAddress': '104.102.221.250', 'userAgent': 'aws-cli/1.16.19 Python/2.7.10 Darwin/17.7.0 botocore/1.12.9', 'requestParameters': {'repositoryName': 'level2', 'registryId': '653711331788'}, 'responseElements': None, 'requestID': '2780d808-f362-11e8-b13e-dbd4ed9d7936', 'eventID': 'eb0fa4a0-580f-4270-bd37-7e45dfb217aa', 'resources': [{'ARN': 'arn:aws:ecr:us-east-1:653711331788:repository/level2', 'accountId': '653711331788'}], 'eventType': 'AwsApiCall', 'recipientAccountId': '653711331788'}\n",
-      "INFO:__main__:Checking File: ./AWSLogs/653711331788/CloudTrail/us_east_1/2018/11/28/653711331788_CloudTrail_us-east-1_20181128T2310Z_A1lhv3sWzzRIBFVk.json.gz\n",
-      "WARNING:__main__:Warning! Principal access open to the public for repo name: level2.\n",
-      "INFO:__main__:Outside IP address: 104.102.221.250 - from eventName: BatchGetImage\n",
-      "INFO:__main__:Call to change IP for this credential: arn:aws:sts::653711331788:assumed-role/level1/level1 - sourceIP: 104.102.221.250\n",
-      "DEBUG:__main__:{'eventVersion': '1.04', 'userIdentity': {'type': 'AssumedRole', 'principalId': 'AROAIBATWWYQXZTTALNCE:level1', 'arn': 'arn:aws:sts::653711331788:assumed-role/level1/level1', 'accountId': '653711331788', 'accessKeyId': 'ASIAZQNB3KHGIGYQXVVG', 'sessionContext': {'attributes': {'mfaAuthenticated': 'false', 'creationDate': '2018-11-28T23:03:12Z'}, 'sessionIssuer': {'type': 'Role', 'principalId': 'AROAIBATWWYQXZTTALNCE', 'arn': 'arn:aws:iam::653711331788:role/service-role/level1', 'accountId': '653711331788', 'userName': 'level1'}}}, 'eventTime': '2018-11-28T23:06:17Z', 'eventSource': 'ecr.amazonaws.com', 'eventName': 'BatchGetImage', 'awsRegion': 'us-east-1', 'sourceIPAddress': '104.102.221.250', 'userAgent': 'aws-cli/1.16.19 Python/2.7.10 Darwin/17.7.0 botocore/1.12.9', 'requestParameters': {'imageIds': [{'imageTag': 'latest'}], 'repositoryName': 'level2', 'registryId': '653711331788'}, 'responseElements': None, 'requestID': '35ea9256-f362-11e8-86cf-35c48074ab0a', 'eventID': 'b2867f3e-810c-47d1-9657-edb886e03fe6', 'resources': [{'ARN': 'arn:aws:ecr:us-east-1:653711331788:repository/level2', 'accountId': '653711331788'}], 'eventType': 'AwsApiCall', 'recipientAccountId': '653711331788'}\n",
-      "WARNING:__main__:Warning! Principal access open to the public for repo name: level2.\n",
-      "INFO:__main__:Outside IP address: 104.102.221.250 - from eventName: GetDownloadUrlForLayer\n",
-      "INFO:__main__:Call to change IP for this credential: arn:aws:sts::653711331788:assumed-role/level1/level1 - sourceIP: 104.102.221.250\n",
-      "DEBUG:__main__:{'eventVersion': '1.04', 'userIdentity': {'type': 'AssumedRole', 'principalId': 'AROAIBATWWYQXZTTALNCE:level1', 'arn': 'arn:aws:sts::653711331788:assumed-role/level1/level1', 'accountId': '653711331788', 'accessKeyId': 'ASIAZQNB3KHGIGYQXVVG', 'sessionContext': {'attributes': {'mfaAuthenticated': 'false', 'creationDate': '2018-11-28T23:03:12Z'}, 'sessionIssuer': {'type': 'Role', 'principalId': 'AROAIBATWWYQXZTTALNCE', 'arn': 'arn:aws:iam::653711331788:role/service-role/level1', 'accountId': '653711331788', 'userName': 'level1'}}}, 'eventTime': '2018-11-28T23:06:33Z', 'eventSource': 'ecr.amazonaws.com', 'eventName': 'GetDownloadUrlForLayer', 'awsRegion': 'us-east-1', 'sourceIPAddress': '104.102.221.250', 'userAgent': 'aws-cli/1.16.19 Python/2.7.10 Darwin/17.7.0 botocore/1.12.9', 'requestParameters': {'layerDigest': 'sha256:2d73de35b78103fa305bd941424443d520524a050b1e0c78c488646c0f0a0621', 'repositoryName': 'level2', 'registryId': '653711331788'}, 'responseElements': None, 'requestID': '3f96ec7f-f362-11e8-bf5d-3380094c69db', 'eventID': 'ff4c72f3-4fbd-45d4-9ee3-3834a78f53de', 'resources': [{'ARN': 'arn:aws:ecr:us-east-1:653711331788:repository/level2', 'accountId': '653711331788'}], 'eventType': 'AwsApiCall', 'recipientAccountId': '653711331788'}\n",
-      "INFO:__main__:Checking File: ./AWSLogs/653711331788/CloudTrail/us_east_1/2018/11/28/653711331788_CloudTrail_us-east-1_20181128T2310Z_jJW5HfNtz7kOnvcP.json.gz\n",
-      "WARNING:__main__:Warning! Principal access open to the public for repo name: level2.\n",
-      "INFO:__main__:Outside IP address: 104.102.221.250 - from eventName: ListObjects\n",
-      "INFO:__main__:Call to change IP for this credential: arn:aws:sts::653711331788:assumed-role/level1/level1 - sourceIP: 104.102.221.250\n",
-      "DEBUG:__main__:{'eventVersion': '1.05', 'userIdentity': {'type': 'AssumedRole', 'principalId': 'AROAIBATWWYQXZTTALNCE:level1', 'arn': 'arn:aws:sts::653711331788:assumed-role/level1/level1', 'accountId': '653711331788', 'accessKeyId': 'ASIAZQNB3KHGIGYQXVVG', 'sessionContext': {'sessionIssuer': {'type': 'Role', 'principalId': 'AROAIBATWWYQXZTTALNCE', 'arn': 'arn:aws:iam::653711331788:role/service-role/level1', 'accountId': '653711331788', 'userName': 'level1'}, 'attributes': {'creationDate': '2018-11-28T23:03:12Z', 'mfaAuthenticated': 'false'}}}, 'eventTime': '2018-11-28T23:04:54Z', 'eventSource': 's3.amazonaws.com', 'eventName': 'ListObjects', 'awsRegion': 'us-east-1', 'sourceIPAddress': '104.102.221.250', 'userAgent': '[aws-cli/1.16.19 Python/2.7.10 Darwin/17.7.0 botocore/1.12.9]', 'requestParameters': {'list-type': '2', 'bucketName': 'level1.flaws2.cloud', 'encoding-type': 'url', 'prefix': '', 'delimiter': '/'}, 'responseElements': None, 'additionalEventData': {'x-amz-id-2': 'zUno6UWW1NIjHLVhC3kvw8uE/5erk7GvVVsYEeahpsW37yi99WZ+biqEaRT1Xr9cj0pkG39bNIQ='}, 'requestID': '8D9133EDD418DB32', 'eventID': '8b3e9429-989c-4e28-92b3-da8df5603f6d', 'readOnly': True, 'resources': [{'type': 'AWS::S3::Object', 'ARNPrefix': 'arn:aws:s3:::level1.flaws2.cloud/'}, {'accountId': '653711331788', 'type': 'AWS::S3::Bucket', 'ARN': 'arn:aws:s3:::level1.flaws2.cloud'}], 'eventType': 'AwsApiCall', 'recipientAccountId': '653711331788'}\n",
-      "INFO:__main__:Checking File: ./AWSLogs/653711331788/CloudTrail/us_east_1/2018/11/28/653711331788_CloudTrail_us-east-1_20181128T2310Z_jQajCuiobojD8I4y.json.gz\n",
-      "WARNING:__main__:Warning! Principal access open to the public for repo name: level2.\n"
-     ]
-    },
-    {
-     "name": "stderr",
-     "output_type": "stream",
-     "text": [
-      "INFO:__main__:Outside IP address: 104.102.221.250 - from eventName: ListBuckets\n",
-      "INFO:__main__:Checking File: ./AWSLogs/653711331788/CloudTrail/us_east_1/2018/11/28/653711331788_CloudTrail_us-east-1_20181128T2310Z_rp9i9zxR2Vcpqfnz.json.gz\n"
-     ]
-    },
-    {
-     "data": {
-      "text/plain": [
-       "[{'eventVersion': '1.04',\n",
-       "  'userIdentity': {'type': 'AssumedRole',\n",
-       "   'principalId': 'AROAIBATWWYQXZTTALNCE:level1',\n",
-       "   'arn': 'arn:aws:sts::653711331788:assumed-role/level1/level1',\n",
-       "   'accountId': '653711331788',\n",
-       "   'accessKeyId': 'ASIAZQNB3KHGIGYQXVVG',\n",
-       "   'sessionContext': {'attributes': {'mfaAuthenticated': 'false',\n",
-       "     'creationDate': '2018-11-28T23:03:12Z'},\n",
-       "    'sessionIssuer': {'type': 'Role',\n",
-       "     'principalId': 'AROAIBATWWYQXZTTALNCE',\n",
-       "     'arn': 'arn:aws:iam::653711331788:role/service-role/level1',\n",
-       "     'accountId': '653711331788',\n",
-       "     'userName': 'level1'}}},\n",
-       "  'eventTime': '2018-11-28T23:05:53Z',\n",
-       "  'eventSource': 'ecr.amazonaws.com',\n",
-       "  'eventName': 'ListImages',\n",
-       "  'awsRegion': 'us-east-1',\n",
-       "  'sourceIPAddress': '104.102.221.250',\n",
-       "  'userAgent': 'aws-cli/1.16.19 Python/2.7.10 Darwin/17.7.0 botocore/1.12.9',\n",
-       "  'requestParameters': {'repositoryName': 'level2',\n",
-       "   'registryId': '653711331788'},\n",
-       "  'responseElements': None,\n",
-       "  'requestID': '2780d808-f362-11e8-b13e-dbd4ed9d7936',\n",
-       "  'eventID': 'eb0fa4a0-580f-4270-bd37-7e45dfb217aa',\n",
-       "  'resources': [{'ARN': 'arn:aws:ecr:us-east-1:653711331788:repository/level2',\n",
-       "    'accountId': '653711331788'}],\n",
-       "  'eventType': 'AwsApiCall',\n",
-       "  'recipientAccountId': '653711331788'},\n",
-       " {'eventVersion': '1.04',\n",
-       "  'userIdentity': {'type': 'AssumedRole',\n",
-       "   'principalId': 'AROAIBATWWYQXZTTALNCE:level1',\n",
-       "   'arn': 'arn:aws:sts::653711331788:assumed-role/level1/level1',\n",
-       "   'accountId': '653711331788',\n",
-       "   'accessKeyId': 'ASIAZQNB3KHGIGYQXVVG',\n",
-       "   'sessionContext': {'attributes': {'mfaAuthenticated': 'false',\n",
-       "     'creationDate': '2018-11-28T23:03:12Z'},\n",
-       "    'sessionIssuer': {'type': 'Role',\n",
-       "     'principalId': 'AROAIBATWWYQXZTTALNCE',\n",
-       "     'arn': 'arn:aws:iam::653711331788:role/service-role/level1',\n",
-       "     'accountId': '653711331788',\n",
-       "     'userName': 'level1'}}},\n",
-       "  'eventTime': '2018-11-28T23:06:17Z',\n",
-       "  'eventSource': 'ecr.amazonaws.com',\n",
-       "  'eventName': 'BatchGetImage',\n",
-       "  'awsRegion': 'us-east-1',\n",
-       "  'sourceIPAddress': '104.102.221.250',\n",
-       "  'userAgent': 'aws-cli/1.16.19 Python/2.7.10 Darwin/17.7.0 botocore/1.12.9',\n",
-       "  'requestParameters': {'imageIds': [{'imageTag': 'latest'}],\n",
-       "   'repositoryName': 'level2',\n",
-       "   'registryId': '653711331788'},\n",
-       "  'responseElements': None,\n",
-       "  'requestID': '35ea9256-f362-11e8-86cf-35c48074ab0a',\n",
-       "  'eventID': 'b2867f3e-810c-47d1-9657-edb886e03fe6',\n",
-       "  'resources': [{'ARN': 'arn:aws:ecr:us-east-1:653711331788:repository/level2',\n",
-       "    'accountId': '653711331788'}],\n",
-       "  'eventType': 'AwsApiCall',\n",
-       "  'recipientAccountId': '653711331788'},\n",
-       " {'eventVersion': '1.04',\n",
-       "  'userIdentity': {'type': 'AssumedRole',\n",
-       "   'principalId': 'AROAIBATWWYQXZTTALNCE:level1',\n",
-       "   'arn': 'arn:aws:sts::653711331788:assumed-role/level1/level1',\n",
-       "   'accountId': '653711331788',\n",
-       "   'accessKeyId': 'ASIAZQNB3KHGIGYQXVVG',\n",
-       "   'sessionContext': {'attributes': {'mfaAuthenticated': 'false',\n",
-       "     'creationDate': '2018-11-28T23:03:12Z'},\n",
-       "    'sessionIssuer': {'type': 'Role',\n",
-       "     'principalId': 'AROAIBATWWYQXZTTALNCE',\n",
-       "     'arn': 'arn:aws:iam::653711331788:role/service-role/level1',\n",
-       "     'accountId': '653711331788',\n",
-       "     'userName': 'level1'}}},\n",
-       "  'eventTime': '2018-11-28T23:06:33Z',\n",
-       "  'eventSource': 'ecr.amazonaws.com',\n",
-       "  'eventName': 'GetDownloadUrlForLayer',\n",
-       "  'awsRegion': 'us-east-1',\n",
-       "  'sourceIPAddress': '104.102.221.250',\n",
-       "  'userAgent': 'aws-cli/1.16.19 Python/2.7.10 Darwin/17.7.0 botocore/1.12.9',\n",
-       "  'requestParameters': {'layerDigest': 'sha256:2d73de35b78103fa305bd941424443d520524a050b1e0c78c488646c0f0a0621',\n",
-       "   'repositoryName': 'level2',\n",
-       "   'registryId': '653711331788'},\n",
-       "  'responseElements': None,\n",
-       "  'requestID': '3f96ec7f-f362-11e8-bf5d-3380094c69db',\n",
-       "  'eventID': 'ff4c72f3-4fbd-45d4-9ee3-3834a78f53de',\n",
-       "  'resources': [{'ARN': 'arn:aws:ecr:us-east-1:653711331788:repository/level2',\n",
-       "    'accountId': '653711331788'}],\n",
-       "  'eventType': 'AwsApiCall',\n",
-       "  'recipientAccountId': '653711331788'},\n",
-       " {'eventVersion': '1.05',\n",
-       "  'userIdentity': {'type': 'AssumedRole',\n",
-       "   'principalId': 'AROAIBATWWYQXZTTALNCE:level1',\n",
-       "   'arn': 'arn:aws:sts::653711331788:assumed-role/level1/level1',\n",
-       "   'accountId': '653711331788',\n",
-       "   'accessKeyId': 'ASIAZQNB3KHGIGYQXVVG',\n",
-       "   'sessionContext': {'sessionIssuer': {'type': 'Role',\n",
-       "     'principalId': 'AROAIBATWWYQXZTTALNCE',\n",
-       "     'arn': 'arn:aws:iam::653711331788:role/service-role/level1',\n",
-       "     'accountId': '653711331788',\n",
-       "     'userName': 'level1'},\n",
-       "    'attributes': {'creationDate': '2018-11-28T23:03:12Z',\n",
-       "     'mfaAuthenticated': 'false'}}},\n",
-       "  'eventTime': '2018-11-28T23:04:54Z',\n",
-       "  'eventSource': 's3.amazonaws.com',\n",
-       "  'eventName': 'ListObjects',\n",
-       "  'awsRegion': 'us-east-1',\n",
-       "  'sourceIPAddress': '104.102.221.250',\n",
-       "  'userAgent': '[aws-cli/1.16.19 Python/2.7.10 Darwin/17.7.0 botocore/1.12.9]',\n",
-       "  'requestParameters': {'list-type': '2',\n",
-       "   'bucketName': 'level1.flaws2.cloud',\n",
-       "   'encoding-type': 'url',\n",
-       "   'prefix': '',\n",
-       "   'delimiter': '/'},\n",
-       "  'responseElements': None,\n",
-       "  'additionalEventData': {'x-amz-id-2': 'zUno6UWW1NIjHLVhC3kvw8uE/5erk7GvVVsYEeahpsW37yi99WZ+biqEaRT1Xr9cj0pkG39bNIQ='},\n",
-       "  'requestID': '8D9133EDD418DB32',\n",
-       "  'eventID': '8b3e9429-989c-4e28-92b3-da8df5603f6d',\n",
-       "  'readOnly': True,\n",
-       "  'resources': [{'type': 'AWS::S3::Object',\n",
-       "    'ARNPrefix': 'arn:aws:s3:::level1.flaws2.cloud/'},\n",
-       "   {'accountId': '653711331788',\n",
-       "    'type': 'AWS::S3::Bucket',\n",
-       "    'ARN': 'arn:aws:s3:::level1.flaws2.cloud'}],\n",
-       "  'eventType': 'AwsApiCall',\n",
-       "  'recipientAccountId': '653711331788'}]"
-      ]
-     },
-     "execution_count": 401,
-     "metadata": {},
-     "output_type": "execute_result"
-    }
-   ],
-   "source": [
-    "import pandas as pd\n",
-    "import requests\n",
-    "import numpy as np\n",
-    "import boto3 as bt\n",
-    "import requests\n",
-    "from ipaddress import ip_address, ip_network\n",
-    "import json\n",
-    "import time\n",
-    "import yaml\n",
-    "import gzip\n",
-    "from datetime import datetime, timedelta\n",
-    "\n",
-    "REGION = 'us-east-1'\n",
-    "ACCESS_POINT = 'flaws2-logs'\n",
-    "ACCOUNT_ID = '322079859186'\n",
-    "ACCESS_KEY = 'AKIAIUFNQ2WCOPTEITJQ'\n",
-    "SECRET_KEY = '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'\n",
-    "CONFIG_YAML = './config/config.yaml'\n",
-    "TARGET_PROFILE = 'target_security'\n",
-    "\n",
-    "log=logging.basicConfig(filemode='w')\n",
-    "log=logging.getLogger(__name__)\n",
-    "file_handler=logging.FileHandler('cloudtrail.log')\n",
-    "log.addHandler(file_handler)\n",
-    "log.setLevel('DEBUG')\n",
-    "\n",
-    "# Set up security profile variables\n",
-    "response = bt.client('sts')\n",
-    "security_id = response.get_caller_identity()\n",
-    "\n",
-    "# Set up target_security profile variables\n",
-    "target_session = bt.Session(profile_name=TARGET_PROFILE)\n",
-    "target_client = target_session.client('sts')\n",
-    "target_security_id = target_client.get_caller_identity()\n",
-    "\n",
-    "# Download logs\n",
-    "!aws s3 sync s3://flaws2-logs .\n",
-    "os.rename('./AWSLogs/653711331788/CloudTrail/us-east-1/', \n",
-    "          './AWSLogs/653711331788/CloudTrail/us_east_1/')\n",
-    "directory='./AWSLogs/653711331788/CloudTrail/us_east_1/2018/11/28/'\n",
-    "files = [os.path.join(directory,f) for f in os.listdir(directory)]\n",
-    "\n",
-    "def whitelisted_ip(whitelist, ip):\n",
-    "    \"\"\"\n",
-    "    Check ip to see if it is in the whitelist.\n",
-    "    \"\"\"\n",
-    "    for cidr in whitelist:\n",
-    "        if ip_address(ip) in ip_network(cidr):\n",
-    "            return True\n",
-    "    return False\n",
-    "\n",
-    "def add_aws_ips_to_whitelist(config=CONFIG_YAML, service=None, ip_format='ip'):\n",
-    "    \"\"\"\n",
-    "    Pulling list of AWS's IP ranges to add to whitelist and writes them to a .yaml file. \n",
-    "    \n",
-    "    config = string\n",
-    "        The /path/to/the/file.yaml file where the whitelist will be held.\n",
-    "    service = string\n",
-    "        Amazon service to filter ips by.  Ex: 'AMAZON','S3','CLOUDWATCH','DYNAMODB'\n",
-    "        if None, will return ips for all services\n",
-    "    format = string\n",
-    "        default is ip_address.  Alternative option is 'ipv6'\n",
-    "        \n",
-    "    \"\"\"\n",
-    "    if ip_format=='ipv6':\n",
-    "        prefix='ipv6_prefixes'\n",
-    "        ip='ipv6_prefix'\n",
-    "    elif ip_format=='ip':\n",
-    "        prefix = 'prefixes'\n",
-    "        ip='ip_prefix'\n",
-    "    ip_ranges = requests.get('https://ip-ranges.amazonaws.com/ip-ranges.json').json()[prefix]\n",
-    "    \n",
-    "    amazon_ips = [item[ip] for item in ip_ranges if item[\"service\"] == \"AMAZON\"]\n",
-    "    ec2_ips = [item[ip] for item in ip_ranges if item[\"service\"] == \"EC2\"]\n",
-    "    amazon_ips_less_ec2=[]\n",
-    "    ips={'aws_whitelist_ips':amazon_ips_less_ec2}\n",
-    "\n",
-    "    for ip in amazon_ips:\n",
-    "        if ip not in ec2_ips:\n",
-    "            amazon_ips_less_ec2.append(ip)\n",
-    "\n",
-    "    with open(config, 'w') as file:\n",
-    "        doc=yaml.dump(ips, file)\n",
-    "\n",
-    "# Saving to YAML for ease of adding additional whitelisted ips\n",
-    "add_aws_ips_to_whitelist()\n",
-    "\n",
-    "def private_ip_check(ip):\n",
-    "    \"\"\"\n",
-    "    Check Whitelist for allowed ips\n",
-    "    \"\"\"\n",
-    "    private = ['100.64.0.0/10', '10.0.0.0/8', '172.16.0.0/12', '192.168.0.0/16']\n",
-    "    for cidr in private:\n",
-    "        if ip_address(ip) in ip_network(cidr):\n",
-    "            return True\n",
-    "    return False\n",
-    "\n",
-    "def check_policy(profile=TARGET_PROFILE):\n",
-    "    \"\"\"\n",
-    "    Checks the repositories for principal access open to the public\n",
-    "    \"\"\"\n",
-    "    session = bt.session.Session(aws_access_key_id=ACCESS_KEY,\n",
-    "                  aws_secret_access_key=SECRET_KEY,\n",
-    "                  profile_name=profile)\n",
-    "    target_ecr = target_session.client('ecr')\n",
-    "    for repo in range(len(target_ecr.describe_repositories()['repositories'])):\n",
-    "        target_repo = target_ecr.describe_repositories()['repositories'][repo]['repositoryName']\n",
-    "        target_principal = json.loads(target_ecr.get_repository_policy(repositoryName=target_repo)['policyText'])['Statement'][0]['Principal']\n",
-    "        if target_principal == '*':\n",
-    "            log.warning(f\"Warning! Principal access open to the public for repo name: {target_repo}.\")\n",
-    "\n",
-    "\n",
-    "def detect_suspicious_activity(config, files):\n",
-    "    \"\"\"\n",
-    "    Looks for suspicious IPs from AWS\n",
-    "    \n",
-    "    config = string\n",
-    "        path to config.yaml file containing whitelisted ips\n",
-    "    files = string\n",
-    "        path to cloudtrail log files\n",
-    "    \"\"\"\n",
-    "    suspicious = []\n",
-    "    api_calls={}\n",
-    "    associate_ips=[]\n",
-    "    with open(config) as f:\n",
-    "        whitelist=yaml.full_load(f)\n",
-    "    \n",
-    "    for file in sorted(files):\n",
-    "        f= None\n",
-    "        log.info(f'Checking File: {file}')\n",
-    "        if file.endswith('.gz'):\n",
-    "            f=gzip.open(file, 'r')\n",
-    "        else:\n",
-    "            f = open(file, 'r')\n",
-    "        try:\n",
-    "            cloudtrail = json.load(f)\n",
-    "        except Exception as e:\n",
-    "            log.error(f'Invalid JSON file: {file} - {e}')\n",
-    "            continue\n",
-    "\n",
-    "        records = sorted(cloudtrail['Records'], key=lambda x: datetime.strptime(x['eventTime'], '%Y-%m-%dT%H:%M:%SZ'), reverse=False)\n",
-    "       \n",
-    "        for record in records:\n",
-    "            try:\n",
-    "                if record['eventName'].lower() == 'assumerole': \n",
-    "\n",
-    "                    session_name = record['requestParameters']['roleSessionName']\n",
-    "                    arn = record['requestParameters']['roleArn']\n",
-    "                    account = record['requestParameters']['roleArn'].split(':')[4]\n",
-    "                    role = record['requestParameters']['roleArn'].split('/')[-1]\n",
-    "\n",
-    "                    assume_role_session = f'arn:aws:sts::{account}:assumed-role/{role}/{session_name}'\n",
-    "\n",
-    "                    if not api_calls.get(session_name, None):\n",
-    "                        api_calls[session_name] = {\n",
-    "                            'source_ip': [],\n",
-    "                            'arn': assume_role_session,\n",
-    "                            'ttl': int(time.time() + 28800)\n",
-    "                        }\n",
-    "                    else:\n",
-    "                        # Set a TTL.  This is most useful in DynamoDB\n",
-    "                        api_calls[session_name]['ttl'] = int(time.time() + 28800)\n",
-    "\n",
-    "                if record['userIdentity'].get('type','') == 'AssumedRole':\n",
-    "                    session = record['userIdentity']['arn'].split('/')[-1]\n",
-    "                    \n",
-    "                    # Check for open access in repository\n",
-    "                    check_policy(TARGET_PROFILE)\n",
-    "\n",
-    "                    if api_calls.get(session, None):\n",
-    "                        if 'amazonaws' not in record['sourceIPAddress'] and not whitelisted_ip(whitelist.get('aws_whitelist_ips',[]), record['sourceIPAddress']):\n",
-    "\n",
-    "\n",
-    "                            log.info(f\"Outside IP address: {record['sourceIPAddress']} - from eventName: {record['eventName']}\")\n",
-    "                            # if this is the first call, we can add this IP to the list                          \n",
-    "                            if len(api_calls[session].get('source_ip',[])) == 0:\n",
-    "                                api_calls[session]['source_ip'].append(record['sourceIPAddress'])                            \n",
-    "\n",
-    "                            else:\n",
-    "                                if record['sourceIPAddress'] not in api_calls[session].get('source_ip',[]):\n",
-    "                                    if private_ip_check(record['sourceIPAddress']):\n",
-    "                                        for ip in api_calls[session].get('source_ip',[]):\n",
-    "                                            if private_ip_check(ip):\n",
-    "                                                log.info(f\"Multiple IPs for this credential: {assume_role_session} - sourceIP: {record['sourceIPAddress']}\")\n",
-    "                                                log.debug(record)\n",
-    "                                                suspicious.append(record)\n",
-    "                                        api_calls[session]['source_ip'].append(record['sourceIPAddress'])\n",
-    "                                        continue\n",
-    "\n",
-    "                                    # see if there was a call to change the IP\n",
-    "                                    if session not in associate_ips:\n",
-    "                                        log.info(f\"Call to change IP for this credential: {assume_role_session} - sourceIP: {record['sourceIPAddress']}\")\n",
-    "                                        log.debug(record)\n",
-    "                                        suspicious.append(record)\n",
-    "            except Exception as e:\n",
-    "                log.fatal(f'Unknown error on record - {record}')\n",
-    "                log.fatal(f'Error - {e}')\n",
-    "                \n",
-    "        f.close()\n",
-    "        \n",
-    "    return suspicious  \n",
-    "\n",
-    "detect_suspicious_activity(config=CONFIG_YAML, files= files)"
-   ]
-  }
- ],
- "metadata": {
-  "kernelspec": {
-   "display_name": "Python 3",
-   "language": "python",
-   "name": "python3"
-  },
-  "language_info": {
-   "codemirror_mode": {
-    "name": "ipython",
-    "version": 3
-   },
-   "file_extension": ".py",
-   "mimetype": "text/x-python",
-   "name": "python",
-   "nbconvert_exporter": "python",
-   "pygments_lexer": "ipython3",
-   "version": "3.7.5"
-  }
- },
- "nbformat": 4,
- "nbformat_minor": 2
-}
+#!/usr/bin/env python
+# coding: utf-8
+
+# In[401]:
+
+
+import pandas as pd
+import requests
+import numpy as np
+import boto3 as bt
+import requests
+from ipaddress import ip_address, ip_network
+import json
+import time
+import yaml
+import gzip
+from datetime import datetime, timedelta
+
+REGION = 'us-east-1'
+ACCESS_POINT = 'flaws2-logs'
+ACCOUNT_ID = '322079859186'
+ACCESS_KEY = 'AKIAIUFNQ2WCOPTEITJQ'
+SECRET_KEY = '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'
+CONFIG_YAML = './config/config.yaml'
+TARGET_PROFILE = 'target_security'
+
+log=logging.basicConfig(filemode='w')
+log=logging.getLogger(__name__)
+file_handler=logging.FileHandler('cloudtrail.log')
+log.addHandler(file_handler)
+log.setLevel('DEBUG')
+
+# Set up security profile variables
+response = bt.client('sts')
+security_id = response.get_caller_identity()
+
+# Set up target_security profile variables
+target_session = bt.Session(profile_name=TARGET_PROFILE)
+target_client = target_session.client('sts')
+target_security_id = target_client.get_caller_identity()
+
+# Download logs
+get_ipython().system('aws s3 sync s3://flaws2-logs .')
+os.rename('./AWSLogs/653711331788/CloudTrail/us-east-1/', 
+          './AWSLogs/653711331788/CloudTrail/us_east_1/')
+directory='./AWSLogs/653711331788/CloudTrail/us_east_1/2018/11/28/'
+files = [os.path.join(directory,f) for f in os.listdir(directory)]
+
+def whitelisted_ip(whitelist, ip):
+    """
+    Check ip to see if it is in the whitelist.
+    """
+    for cidr in whitelist:
+        if ip_address(ip) in ip_network(cidr):
+            return True
+    return False
+
+def add_aws_ips_to_whitelist(config=CONFIG_YAML, service=None, ip_format='ip'):
+    """
+    Pulling list of AWS's IP ranges to add to whitelist and writes them to a .yaml file. 
+    
+    config = string
+        The /path/to/the/file.yaml file where the whitelist will be held.
+    service = string
+        Amazon service to filter ips by.  Ex: 'AMAZON','S3','CLOUDWATCH','DYNAMODB'
+        if None, will return ips for all services
+    format = string
+        default is ip_address.  Alternative option is 'ipv6'
+        
+    """
+    if ip_format=='ipv6':
+        prefix='ipv6_prefixes'
+        ip='ipv6_prefix'
+    elif ip_format=='ip':
+        prefix = 'prefixes'
+        ip='ip_prefix'
+    ip_ranges = requests.get('https://ip-ranges.amazonaws.com/ip-ranges.json').json()[prefix]
+    
+    amazon_ips = [item[ip] for item in ip_ranges if item["service"] == "AMAZON"]
+    ec2_ips = [item[ip] for item in ip_ranges if item["service"] == "EC2"]
+    amazon_ips_less_ec2=[]
+    ips={'aws_whitelist_ips':amazon_ips_less_ec2}
+
+    for ip in amazon_ips:
+        if ip not in ec2_ips:
+            amazon_ips_less_ec2.append(ip)
+
+    with open(config, 'w') as file:
+        doc=yaml.dump(ips, file)
+
+# Saving to YAML for ease of adding additional whitelisted ips
+add_aws_ips_to_whitelist()
+
+def private_ip_check(ip):
+    """
+    Check Whitelist for allowed ips
+    """
+    private = ['100.64.0.0/10', '10.0.0.0/8', '172.16.0.0/12', '192.168.0.0/16']
+    for cidr in private:
+        if ip_address(ip) in ip_network(cidr):
+            return True
+    return False
+
+def check_policy(profile=TARGET_PROFILE):
+    """
+    Checks the repositories for principal access open to the public
+    """
+    session = bt.session.Session(aws_access_key_id=ACCESS_KEY,
+                  aws_secret_access_key=SECRET_KEY,
+                  profile_name=profile)
+    target_ecr = target_session.client('ecr')
+    for repo in range(len(target_ecr.describe_repositories()['repositories'])):
+        target_repo = target_ecr.describe_repositories()['repositories'][repo]['repositoryName']
+        target_principal = json.loads(target_ecr.get_repository_policy(repositoryName=target_repo)['policyText'])['Statement'][0]['Principal']
+        if target_principal == '*':
+            log.warning(f"Warning! Principal access open to the public for repo name: {target_repo}.")
+
+
+def detect_suspicious_activity(config, files):
+    """
+    Looks for suspicious IPs from AWS
+    
+    config = string
+        path to config.yaml file containing whitelisted ips
+    files = string
+        path to cloudtrail log files
+    """
+    suspicious = []
+    api_calls={}
+    associate_ips=[]
+    with open(config) as f:
+        whitelist=yaml.full_load(f)
+    
+    for file in sorted(files):
+        f= None
+        log.info(f'Checking File: {file}')
+        if file.endswith('.gz'):
+            f=gzip.open(file, 'r')
+        else:
+            f = open(file, 'r')
+        try:
+            cloudtrail = json.load(f)
+        except Exception as e:
+            log.error(f'Invalid JSON file: {file} - {e}')
+            continue
+
+        records = sorted(cloudtrail['Records'], key=lambda x: datetime.strptime(x['eventTime'], '%Y-%m-%dT%H:%M:%SZ'), reverse=False)
+       
+        for record in records:
+            try:
+                if record['eventName'].lower() == 'assumerole': 
+
+                    session_name = record['requestParameters']['roleSessionName']
+                    arn = record['requestParameters']['roleArn']
+                    account = record['requestParameters']['roleArn'].split(':')[4]
+                    role = record['requestParameters']['roleArn'].split('/')[-1]
+
+                    assume_role_session = f'arn:aws:sts::{account}:assumed-role/{role}/{session_name}'
+
+                    if not api_calls.get(session_name, None):
+                        api_calls[session_name] = {
+                            'source_ip': [],
+                            'arn': assume_role_session,
+                            'ttl': int(time.time() + 28800)
+                        }
+                    else:
+                        # Set a TTL.  This is most useful in DynamoDB
+                        api_calls[session_name]['ttl'] = int(time.time() + 28800)
+
+                if record['userIdentity'].get('type','') == 'AssumedRole':
+                    session = record['userIdentity']['arn'].split('/')[-1]
+                    
+                    # Check for open access in repository
+                    check_policy(TARGET_PROFILE)
+
+                    if api_calls.get(session, None):
+                        if 'amazonaws' not in record['sourceIPAddress'] and not whitelisted_ip(whitelist.get('aws_whitelist_ips',[]), record['sourceIPAddress']):
+
+
+                            log.info(f"Outside IP address: {record['sourceIPAddress']} - from eventName: {record['eventName']}")
+                            # if this is the first call, we can add this IP to the list                          
+                            if len(api_calls[session].get('source_ip',[])) == 0:
+                                api_calls[session]['source_ip'].append(record['sourceIPAddress'])                            
+
+                            else:
+                                if record['sourceIPAddress'] not in api_calls[session].get('source_ip',[]):
+                                    if private_ip_check(record['sourceIPAddress']):
+                                        for ip in api_calls[session].get('source_ip',[]):
+                                            if private_ip_check(ip):
+                                                log.info(f"Multiple IPs for this credential: {assume_role_session} - sourceIP: {record['sourceIPAddress']}")
+                                                log.debug(record)
+                                                suspicious.append(record)
+                                        api_calls[session]['source_ip'].append(record['sourceIPAddress'])
+                                        continue
+
+                                    # see if there was a call to change the IP
+                                    if session not in associate_ips:
+                                        log.info(f"Call to change IP for this credential: {assume_role_session} - sourceIP: {record['sourceIPAddress']}")
+                                        log.debug(record)
+                                        suspicious.append(record)
+            except Exception as e:
+                log.fatal(f'Unknown error on record - {record}')
+                log.fatal(f'Error - {e}')
+                
+        f.close()
+        
+    return suspicious  
+
+detect_suspicious_activity(config=CONFIG_YAML, files= files)
+
+
+# In[ ]:
+
+
+
+

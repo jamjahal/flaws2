@@ -49,7 +49,7 @@
     "    if not config:\n",
     "        config = {}\n",
     "        \n",
-    "    api_calls_recorded = detect_suspicious_activityS(config, files)\n",
+    "    api_calls_recorded = detect_suspicious_activity(config, files)\n",
     "    \n",
     "if __name__=='__main__':\n",
     "    try:\n",
